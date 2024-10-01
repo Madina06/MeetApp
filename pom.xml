@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.meetapp</groupId>
+	<artifactId>core</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>MeetAppCore</name>
+	<description>This project will develop a web-based event management system
+		using Spring Boot with an MVC architecture. The front-end will use
+		Thymeleaf for rendering dynamic web pages, and MongoDB will be the
+		database. The entire project will strictly follow Test-Driven
+		Development (TDD) principles, where tests are written first for all
+		layers of the application, including the model, controller, service, and
+		database interactions. Swing-based testing techniques will be used for
+		end-to-end (E2E) testing, simulating user workflows and validating the
+		system's correctness. The goal is to ensure a maintainable, well-tested
+		web application that adheres to high code quality standards.</description>
+
+	<modules>
+		<module>domain</module>
+		<module>dao</module>
+		<module>service</module>
+		<module>controller</module>
+		<module>view</module>
+	</modules>
+
+	<properties>
+		<java.version>17</java.version>
+		<spring.boot.version>3.1.0</spring.boot.version>
+		<thymeleaf.version>3.1.2</thymeleaf.version>
+		<mongodb.driver.version>4.11.1</mongodb.driver.version>
+		<junit.jupiter.version>5.10.2</junit.jupiter.version>
+		<mockito.version>4.11.0</mockito.version>
+		<pitest.version>1.7.3</pitest.version>
+		<assertj.version>3.22.0</assertj.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring.boot.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+
+			<dependency>
+				<groupId>org.thymeleaf</groupId>
+				<artifactId>thymeleaf</artifactId>
+				<version>${thymeleaf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.thymeleaf</groupId>
+				<artifactId>thymeleaf-spring5</artifactId>
+				<version>${thymeleaf.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mongodb</groupId>
+				<artifactId>mongodb-driver-sync</artifactId>
+				<version>${mongodb.driver.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter</artifactId>
+				<version>${junit.jupiter.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>${mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+			
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>${pitest.version}</version>
+                <scope>test</scope>
+            </dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.11.0</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.1.2</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${spring.boot.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
